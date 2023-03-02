@@ -8,3 +8,7 @@
 - [ ] Sort the companies by number of vacancies in the world and in Spain
 - [ ] Show those sorted lists 
 
+
+# NICE TO HAVE
+
+- [ ] Send by email (address set as a variable in code) the results
