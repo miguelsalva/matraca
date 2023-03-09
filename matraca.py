@@ -18,6 +18,7 @@ DATASET = "https://www.forbes.com/sites/forbesstaff/2022/05/12/forbes-global-200
 
 
 def print_position(cadena):
+    """Function that returns the portion of string between the "#" and a blankspace"""
     for i in range(len(cadena)):
       if cadena[i] == "#":
           j = i
@@ -26,6 +27,7 @@ def print_position(cadena):
           return cadena[i:j] 
         
 
+# Main
 req = requests.get(DATASET)
 html = BeautifulSoup(req.text, 'html.parser')
 
