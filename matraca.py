@@ -13,19 +13,28 @@ import sys
 import requests 
 from bs4 import BeautifulSoup
 
-################################################
-# URL = sys.argv[1]
-#URL = "https://www.linkedin.com/jobs/meli%C3%A1-hotels-international-jobs-worldwide?f_C=10838&trk=job-results_see-all-jobs-link&position=1&pageNum=0"
-#string1 = ""
 
-#req = requests.get(URL)
-#html = BeautifulSoup(req.text, 'html.parser')
+DATASET = "https://www.forbes.com/sites/forbesstaff/2022/05/12/forbes-global-2000-list-2022-the-top-200/"
 
-#print(html.title)
-#print(len(html.title.contents))
-#string1 = str(html.title)
-#print(string1)
-#print(len(string1))
-#print(string1[7:10])
-#print("")
-###############################################
+
+def print_position(cadena):
+    for i in range(len(cadena)):
+      if cadena[i] == "#":
+          j = i
+          while cadena[j] != " ":
+              j = j+1
+          return cadena[i:j] 
+        
+
+req = requests.get(DATASET)
+html = BeautifulSoup(req.text, 'html.parser')
+
+contenido = html.find(class_='article-body')
+contenido_empresas = contenido.find_all('h3')
+
+for componente in contenido_empresas:
+    componente = str(componente)
+    print(componente)
+    num = print_position(componente)
+    print(num)
+    print("")
